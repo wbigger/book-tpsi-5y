@@ -3,8 +3,8 @@ authors = ["wbigger"]
 language = "it"
 multilingual = false
 src = "src"
-title = "Course Template"
+title = "TPSI - Quinto anno"
 
 [output.html]
 additional-css = ["custom.css"]
-git-repository-url = "https://github.com/wbigger/"
+git-repository-url = "https://github.com/wbigger/book-tpsi-5y/"
