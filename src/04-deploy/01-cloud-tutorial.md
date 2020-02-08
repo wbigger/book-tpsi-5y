@@ -11,7 +11,7 @@ Ora vi ritrovate in una console reale di AWS! Ricordatevi di rimanere sempre in 
 
 Dalla lista dei servizi in alto, selezionate EC2. Nella pagina che si apre, selezionate il bottone blu per lanciare una nuova istanza. Lasciate tutto di default: Linux Amazon 2 AMI su x86 a 64bit, e t2.micro.
 
-Generate una nuova chiave privata quando richiesto. **ATTENZIONE!** mettete la chiave privata in un luogo sicuro, per esempio inviatevela per posta o copiatela su una chiavetta. Se perdete il file, non potrete più accedere alla vostra istanza; se qualcuno entra in possesso del file, potrà entrare e modificare la vostra istanza cloud.
+Generate una nuova chiave privata quando richiesto, con il vostro cognome tutto minuscolo. **ATTENZIONE!** mettete la chiave privata in un luogo sicuro, per esempio inviatevela per posta o copiatela su una chiavetta. Se perdete il file, non potrete più accedere alla vostra istanza; se qualcuno entra in possesso del file, potrà entrare e modificare la vostra istanza cloud.
 
 Non chiudere la finestra della dashboard, ci servirà in seguito.
 
@@ -41,7 +41,7 @@ Controllare che VSCode sia come in figura.
 ### Copiare la chiave
 Per potersi connettere correttamente, la vostra chiave privata deve stare dentro la cartella `.ssh` della vostra home.
 
-1. controllate che esista la cartella `.ssh` dentro `C:\Users\NomeUtente\.ssh`, se non esiste createla
+1. controllate che esista la cartella `.ssh` dentro `C:\Users\NomeUtente\`, se non esiste createla
 2. copiate la vostra chiave privata all'interno della cartella
 
 **CHECKPOINT**
