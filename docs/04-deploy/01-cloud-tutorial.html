@@ -225,6 +225,16 @@ sudo groupadd docker
 sudo usermod -aG docker $USER # logout per avere effetto
 </code></pre>
 <p><strong>CHECKPOINT</strong> Eseguite il comando <code>docker --version</code> e assicuratevi di non avere un messaggio di errore.</p>
+<p>Fate il logout e riavviate la macchina remota.</p>
+<p>Eseguite i seguenti comandi:</p>
+<pre><code class="language-sh">sudo systemctl start docker
+sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+
+# install git
+sudo yum install git -y
+</code></pre>
 
                     </main>
 
