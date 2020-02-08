@@ -58,6 +58,11 @@ Controllare che la vostra chiave privata sia all'interno della cartella `.ssh` d
 <img class="centered w80p" title="Remote-SSH" alt="Remote-SSH" src="assets/ec2-connect.png">
 </p>
 
+4. sempre dalla barra di SSH Targets, cliccate ora sulla rotella e cliccate sulla prima voce
+5. modificare il percorso della vostra chiave con il path completo del file, ovvero `C:\Users\NomeUtente\.ssh\nomechiave.pem`
+
+
+
 **Checkpoint**
 A questo punto dovete avere un target pronto per connettervi.
 
