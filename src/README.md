@@ -1,11 +1,8 @@
 # Sviluppo HTML5
 
-
-**A.S. 2018-2019**
-
 **Istituto di Istruzione Superiore G. Marconi**
 
-**TPSI**
+**Tecnologie Progettazione Sistemi Informatici**
 
 Benvenuti ragazzi!
 
