@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-tiers/index.html"><strong aria-hidden="true">2.</strong> Architetture multi-tiers</a></li><li class="expanded "><a href="../02-html5/index.html"><strong aria-hidden="true">3.</strong> HTML5</a></li><li><ol class="section"><li class="expanded "><a href="../02-html5/01-html.html"><strong aria-hidden="true">3.1.</strong> HTML</a></li><li class="expanded "><a href="../02-html5/02-css.html"><strong aria-hidden="true">3.2.</strong> CSS</a></li><li class="expanded "><a href="../02-html5/03-js.html"><strong aria-hidden="true">3.3.</strong> JavaScript</a></li></ol></li><li class="expanded "><a href="../03-database/index.html"><strong aria-hidden="true">4.</strong> Database</a></li><li><ol class="section"><li class="expanded "><a href="../03-database/03-crud.html"><strong aria-hidden="true">4.1.</strong> CRUD</a></li><li class="expanded "><a href="../03-database/04-postman.html" class="active"><strong aria-hidden="true">4.2.</strong> Postman</a></li></ol></li><li class="expanded "><a href="../04-deploy/index.html"><strong aria-hidden="true">5.</strong> Deploy</a></li><li><ol class="section"><li class="expanded "><a href="../04-deploy/01-cloud.html"><strong aria-hidden="true">5.1.</strong> Cloud</a></li><li class="expanded "><a href="../04-deploy/01-cloud-tutorial.html"><strong aria-hidden="true">5.2.</strong> Cloud - tutorial</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-tiers/index.html"><strong aria-hidden="true">2.</strong> Architetture multi-tiers</a></li><li class="expanded "><a href="../02-html5/index.html"><strong aria-hidden="true">3.</strong> HTML5</a></li><li><ol class="section"><li class="expanded "><a href="../02-html5/01-html.html"><strong aria-hidden="true">3.1.</strong> HTML</a></li><li class="expanded "><a href="../02-html5/02-css.html"><strong aria-hidden="true">3.2.</strong> CSS</a></li><li class="expanded "><a href="../02-html5/03-js.html"><strong aria-hidden="true">3.3.</strong> JavaScript</a></li></ol></li><li class="expanded "><a href="../03-database/index.html"><strong aria-hidden="true">4.</strong> Database</a></li><li><ol class="section"><li class="expanded "><a href="../03-database/03-crud.html"><strong aria-hidden="true">4.1.</strong> CRUD</a></li><li class="expanded "><a href="../03-database/04-postman.html" class="active"><strong aria-hidden="true">4.2.</strong> Postman</a></li></ol></li><li class="expanded "><a href="../04-deploy/index.html"><strong aria-hidden="true">5.</strong> Deploy</a></li><li><ol class="section"><li class="expanded "><a href="../04-deploy/01-cloud.html"><strong aria-hidden="true">5.1.</strong> Cloud</a></li><li class="expanded "><a href="../04-deploy/01-cloud-tutorial.html"><strong aria-hidden="true">5.2.</strong> Cloud - tutorial</a></li><li class="expanded "><a href="../04-deploy/02-on-prem.html"><strong aria-hidden="true">5.3.</strong> On Premises</a></li><li class="expanded "><a href="../04-deploy/03-hybrid.html"><strong aria-hidden="true">5.4.</strong> Ibrido</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -160,25 +160,32 @@
 <p>La prima volta che lanciamo l'applicazione ci viene chiesto di registrarci, ma possiamo saltare questo passaggio premendo su &quot;skip&quot; in basso.</p>
 <p>Una volta aperta l'applicazione, creiamo una nuova collezione dando un nome a piacere, ad esempio &quot;Book HTML5&quot;</p>
 <h2><a class="header" href="#get" id="get">GET</a></h2>
-<p>All'interno della collezione appena creata, aggiungiamo una &quot;Request&quot; che possiamo chiamare ad esempio &quot;Get drone details&quot;. Mettiamo nel campo URL il link alla risorsa, nel nostro caso <a href="https://projectx-marconi.firebaseio.com/dronedetail.json">https://projectx-marconi.firebaseio.com/dronedetail.json</a>, e premiamo Send.</p>
+<p>All'interno della collezione appena creata, aggiungiamo una &quot;Request&quot; che possiamo chiamare con il nome del servizio che stiamo interrogando.</p>
 <p align="center">
-<img title="postman-GET" alt="postman-GET" src="assets/postman-get.png"></a>
+<img class="w80p" title="postman-GET" alt="postman-GET" src="assets/postman-get.png"></a>
 </p>
 <p>Nella parte in basso ci sono i dati relativi alla riposta del server, in cui possiamo leggere il JSON restituito dal database.</p>
-<h2><a class="header" href="#put" id="put">PUT</a></h2>
-<p>Immaginiamo ora di voler modificare il valore della batteria, e portarlo al 70%.</p>
-<p>Creiamo una nuova request premendo il &quot;+&quot; nella barra in alto di Postman, quindi:</p>
+<p>Qui una lista di URL che avete trovato nel compito assegnato:</p>
 <ul>
-<li>seleziamo il metodo PUT</li>
-<li>inseriamo nel campo URL il link alla risorsa di nostro interesse, nel nostro caso <a href="https://projectx-marconi.firebaseio.com/dronedetail/batteria.json">https://projectx-marconi.firebaseio.com/dronedetail/batteria.json</a></li>
-<li>subito sotto l'URL, selezionamo &quot;Body&quot;, quindi &quot;raw&quot; e cambiamo il formato da &quot;text&quot; a &quot;json&quot;</li>
-<li>inseriamo il nuovo valore in formato JSON, in questo caso <code>&quot;70%&quot;</code> (compresi i doppi apici)</li>
-<li>premiamo SEND</li>
+<li><a href="https://ipapi.co/8.8.8.8/json">https://ipapi.co/8.8.8.8/json</a></li>
+<li><a href="https://adsbexchange.com/api/aircraft/json/">https://adsbexchange.com/api/aircraft/json/</a></li>
+<li><a href="http://www3.septa.org/hackathon/NextToArrive/?req1=Airport%20Terminal%20B&amp;req2=Ardmore&amp;req3=10">http://www3.septa.org/hackathon/NextToArrive/?req1=Airport%20Terminal%20B&amp;req2=Ardmore&amp;req3=10</a></li>
+<li><a href="http://ergast.com/api/f1/drivers.json?callback=myParser">http://ergast.com/api/f1/drivers.json?callback=myParser</a></li>
+<li><a href="http://ergast.com/api/f1/drivers.json">http://ergast.com/api/f1/drivers.json</a></li>
+<li><a href="https://www.balldontlie.io/api/v1/teams/26">https://www.balldontlie.io/api/v1/teams/26</a></li>
+<li><a href="https://pokeapi.co/pokemon/ditto">https://pokeapi.co/pokemon/ditto</a></li>
+<li><a href="https://chroniclingamerica.loc.gov/search/titles/results/?terms=michigan&amp;format=json&amp;page=5">https://chroniclingamerica.loc.gov/search/titles/results/?terms=michigan&amp;format=json&amp;page=5</a></li>
+<li><a href="https://openwhyd.org/adrien?format=json">https://openwhyd.org/adrien?format=json</a></li>
+<li><a href="https://www.themealdb.com/api/json/v1/1/search.php?s=Bolognese">https://www.themealdb.com/api/json/v1/1/search.php?s=Bolognese</a></li>
+<li><a href="https://rickandmortyapi.com/api/character/4">https://rickandmortyapi.com/api/character/4</a></li>
+<li><a href="http://ip-api.com/xml/80.36.224.6">http://ip-api.com/xml/80.36.224.6</a></li>
+<li><a href="https://foaas.com/cool/Capobianco">https://foaas.com/cool/Capobianco</a></li>
+<li><a href="http://www.recipepuppy.com/api/?i=onions,garlic&amp;q=omelet&amp;c=eggs">http://www.recipepuppy.com/api/?i=onions,garlic&amp;q=omelet&amp;c=eggs</a></li>
+<li><a href="https://rickandmortyapi.com/api/character/?name=Collector&amp;status=alive">https://rickandmortyapi.com/api/character/?name=Collector&amp;status=alive</a></li>
+<li><a href="https://world.openfoodfacts.org/api/v0/product/737628064502.json?as=nuggets">https://world.openfoodfacts.org/api/v0/product/737628064502.json?as=nuggets</a></li>
+<li><a href="http://NflArrest.com/api/v1/crime">http://NflArrest.com/api/v1/crime</a></li>
+<li><a href="http://ergast.com/api/f1/drivers.json?callback=myParser">http://ergast.com/api/f1/drivers.json?callback=myParser</a></li>
 </ul>
-<p align="center">
-<img title="postman-PUT" alt="postman-PUT" src="assets/postman-put.png"></a>
-</p>
-<p>Nel body della response in basso vedremo lo stesso valore che abbiamo inserito, che corrisponde al nuovo valore nel database. In pratica ci da conferma che l'operazione è andata a buon fine.</p>
 
                     </main>
 

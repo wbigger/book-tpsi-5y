@@ -12,4 +12,6 @@
 - [Deploy](./04-deploy/README.md)
   - [Cloud](./04-deploy/01-cloud.md)
   - [Cloud - tutorial](./04-deploy/01-cloud-tutorial.md)
+  - [On Premises](./04-deploy/02-on-prem.md)
+  - [Ibrido](./04-deploy/03-hybrid.md)
 

@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>CRUD - TPSI - Quinto anno</title>
+        <title>On Premises - TPSI - Quinto anno</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-tiers/index.html"><strong aria-hidden="true">2.</strong> Architetture multi-tiers</a></li><li class="expanded "><a href="../02-html5/index.html"><strong aria-hidden="true">3.</strong> HTML5</a></li><li><ol class="section"><li class="expanded "><a href="../02-html5/01-html.html"><strong aria-hidden="true">3.1.</strong> HTML</a></li><li class="expanded "><a href="../02-html5/02-css.html"><strong aria-hidden="true">3.2.</strong> CSS</a></li><li class="expanded "><a href="../02-html5/03-js.html"><strong aria-hidden="true">3.3.</strong> JavaScript</a></li></ol></li><li class="expanded "><a href="../03-database/index.html"><strong aria-hidden="true">4.</strong> Database</a></li><li><ol class="section"><li class="expanded "><a href="../03-database/03-crud.html" class="active"><strong aria-hidden="true">4.1.</strong> CRUD</a></li><li class="expanded "><a href="../03-database/04-postman.html"><strong aria-hidden="true">4.2.</strong> Postman</a></li></ol></li><li class="expanded "><a href="../04-deploy/index.html"><strong aria-hidden="true">5.</strong> Deploy</a></li><li><ol class="section"><li class="expanded "><a href="../04-deploy/01-cloud.html"><strong aria-hidden="true">5.1.</strong> Cloud</a></li><li class="expanded "><a href="../04-deploy/01-cloud-tutorial.html"><strong aria-hidden="true">5.2.</strong> Cloud - tutorial</a></li><li class="expanded "><a href="../04-deploy/02-on-prem.html"><strong aria-hidden="true">5.3.</strong> On Premises</a></li><li class="expanded "><a href="../04-deploy/03-hybrid.html"><strong aria-hidden="true">5.4.</strong> Ibrido</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-tiers/index.html"><strong aria-hidden="true">2.</strong> Architetture multi-tiers</a></li><li class="expanded "><a href="../02-html5/index.html"><strong aria-hidden="true">3.</strong> HTML5</a></li><li><ol class="section"><li class="expanded "><a href="../02-html5/01-html.html"><strong aria-hidden="true">3.1.</strong> HTML</a></li><li class="expanded "><a href="../02-html5/02-css.html"><strong aria-hidden="true">3.2.</strong> CSS</a></li><li class="expanded "><a href="../02-html5/03-js.html"><strong aria-hidden="true">3.3.</strong> JavaScript</a></li></ol></li><li class="expanded "><a href="../03-database/index.html"><strong aria-hidden="true">4.</strong> Database</a></li><li><ol class="section"><li class="expanded "><a href="../03-database/03-crud.html"><strong aria-hidden="true">4.1.</strong> CRUD</a></li><li class="expanded "><a href="../03-database/04-postman.html"><strong aria-hidden="true">4.2.</strong> Postman</a></li></ol></li><li class="expanded "><a href="../04-deploy/index.html"><strong aria-hidden="true">5.</strong> Deploy</a></li><li><ol class="section"><li class="expanded "><a href="../04-deploy/01-cloud.html"><strong aria-hidden="true">5.1.</strong> Cloud</a></li><li class="expanded "><a href="../04-deploy/01-cloud-tutorial.html"><strong aria-hidden="true">5.2.</strong> Cloud - tutorial</a></li><li class="expanded "><a href="../04-deploy/02-on-prem.html" class="active"><strong aria-hidden="true">5.3.</strong> On Premises</a></li><li class="expanded "><a href="../04-deploy/03-hybrid.html"><strong aria-hidden="true">5.4.</strong> Ibrido</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -154,67 +154,55 @@
 
                 <div id="content" class="content">
                     <main>
-                        <style>
-.centered {
-	text-align: center;
-}
-img.right_side {
-  float: right;
-  margin:5px 5px 0px 20px;
-  width: 50%;
-}
-img.left_side {
-  float:left;
-  margin:5px 20px 0px 5px;
-  width: 20%;
-}
-
-p.clear {
-  clear: both;  
-}
-p.img-container {
-  margin-bottom: 15px;
-}
-
-p.img-container::after {
-  margin-bottom: 15px;
-  overflow: hidden;
-  clear: both;
-}
-</style>
-<h1><a class="header" href="#operazioni-crud" id="operazioni-crud">Operazioni CRUD</a></h1>
-<p>Quando interagiamo con un qualsiasi database, sappiamo bene che esistono diverse categorie di comandi per interrogarlo e manipolarlo. In generale, i diversi comandi rientrano all'interno delle operazioni cosiddette <strong>CRUD</strong>: <strong>C</strong>reate, <strong>R</strong>ead, <strong>U</strong>pdate e <strong>D</strong>elete.</p>
-<p>I database SQL e le chiamate HTTP usano strategie diverse per eseguire queste operazioni. Di seguito una tabella riassuntiva di confronto.</p>
-<table><thead><tr><th>Operazione</th><th>SQL</th><th>HTTP</th></tr></thead><tbody>
-<tr><td>Create</td><td>INSERT</td><td>POST (o PUT)</td></tr>
-<tr><td>Read</td><td>SELECT</td><td>GET</td></tr>
-<tr><td>Update</td><td>UPDATE</td><td>PUT / PATCH</td></tr>
-<tr><td>Delete</td><td>DELETE</td><td>DELETE</td></tr>
-</tbody></table>
-<h2><a class="header" href="#selezione-della-risorsa" id="selezione-della-risorsa">Selezione della risorsa</a></h2>
-<p>In HTTP, per selezionare l'elemento che si vuole creare o modificare, bisogna identificare <strong>l'URL</strong> della risorsa.</p>
-<p>In generale, avremo un URL base che identifica il database, e un path relativo che identifica la risorsa all'interno del db.</p>
-<h2><a class="header" href="#modifica-della-risorsa" id="modifica-della-risorsa">Modifica della risorsa</a></h2>
-<p>Per modificare la risorsa, il ragionamento è simile. Troviamo il path della risorsa da modificare, ed usiamo <code>POST</code> e <code>PUT</code> in base al tipo di operazione che vogliamo eseguire.</p>
-<h3><a class="header" href="#idempotenza" id="idempotenza">Idempotenza</a></h3>
-<p>Quale usiamo tra <code>POST</code> e <code>PUT</code>? Per rispondere, introduciamo brevemente il concetto di idempotenza. Un comando si chiama <em>idempotente</em> se &quot;<em>richieste ripetute identiche devono portare al medesimo stato dei dati sul server</em>&quot;. Per semplificare, pensate ad esempio ad una UPDATE in SQL. Se chiamate più volte UPDATE con gli stessi parametri, le chiamate successive alla prima non avranno effetto sulla riga da aggiornare. Pensate ora alla INSERT. Se chiamate più volte INSERT con gli stessi parametri (ipotizzando una assegnazione automatica della chiave primaria), ad ogni chiamata il database andrà ad aggiungere una nuova riga.</p>
-<p>La stessa cosa per le chiamate HTTP.</p>
-<p>PUT è idempotente: facendo più richieste HTTP PUT, il DB viene (eventualmente) modificato solo la prima volta.</p>
-<p>POST non è idempotente: facendo più richieste HTTP POST, ad ogni chiamata verrà aggiunta una nuova risorsa e creata una chiave primaria per noi.</p>
-<p>Approfondimento sul concetto di idempotenza <a href="http://blog.loris.tissino.it/2013/06/http-rest-e-api.html">qui</a>.</p>
+                        <h1><a class="header" href="#on-premises" id="on-premises">On-Premises</a></h1>
+<p>On-premises significa che l'azienda prima di tutto allestisce un locale (ovvero una stanza) nei propri uffici come sala server, e la fornisce di rack, raffreddamento, impianti di continuità elettrica (in caso di interruzione della corrente elettrica), controllo fisico degli accessi (es. chiave, badge). Quindi acquista delle macchine da mettere nei rack: routers, switch, firewall, server, etc.</p>
+<p>[Inserire qui: foto della sala server del Marconi]</p>
+<p>Infine dovrà assumere un sistemista per la gestione e manutenzione delle macchine, o stipulare un contratto con un'azienda esterna.</p>
+<h3><a class="header" href="#stima-dei-costi" id="stima-dei-costi">Stima dei costi</a></h3>
+<p>Proviamo a fare la stima dei costi per un'azienda di piccole/medie dimensioni che offre un servizio web, per il primo anno di attività.</p>
+<p>Costi iniziali:</p>
+<ul>
+<li>armadio rack: ~1k €</li>
+<li>server: ~3k €</li>
+<li>impianto continuità: ~500 €</li>
+<li>dispositivi rete (router, switch, ...): ~2k 
+TOTALE: ~6.5k €</li>
+</ul>
+<p>Costi manutenzione anno:</p>
+<ul>
+<li>sistemista (part-time): ~5k €</li>
+<li>elettricità: ~2k €</li>
+<li>costo gestione locale: ~1k €
+TOTALE: ~8k €</li>
+</ul>
+<h3><a class="header" href="#pro--cons" id="pro--cons">Pro &amp; Cons</a></h3>
+<p>Pro</p>
+<ul>
+<li>completa gestione delle macchine</li>
+<li>sicurezza dei dati (li gestisco e proteggo io!)</li>
+<li>nessuna connessione ad internet necessaria per l'accesso da rete locale</li>
+<li>alta velocità di connessione per la rete locale</li>
+</ul>
+<p>Cons</p>
+<ul>
+<li>scalabilità (se cresco devo comprare nuove macchine)</li>
+<li>obsolescenza (devo curarmi di rinnovare il parco macchine regolarmente)</li>
+<li>sicurezza dei dati (li gestisco e proteggo io...)</li>
+</ul>
+<p>In definitiva, potremmo dire che la soluzione on-premises è preferibile per medie-grandi aziende in cui l'uso prevalente dei servizi è dalla rete locale o si hanno dei particolari requisiti di sicurezza dei dati. Esempi: centri commerciali, ospedali, scuole, etc. </p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../03-database/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../04-deploy/01-cloud-tutorial.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../03-database/04-postman.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../04-deploy/03-hybrid.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -226,13 +214,13 @@ p.img-container::after {
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../03-database/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="../04-deploy/01-cloud-tutorial.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="../03-database/04-postman.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a href="../04-deploy/03-hybrid.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
