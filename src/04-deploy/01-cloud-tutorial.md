@@ -240,6 +240,8 @@ Dopo che avrà finito di far scorrere tutte le stampe di inizializzazione (potre
 <img class="centered w80p" title="Remote-SSH" alt="Remote-SSH" src="assets/remote-docker-up.png">
 </p>
 
+> Per chiudere l'applicazione, dovete lanciare il comando `docker-compose down`.
+
 ### Aprire le porte nell'istanza EC2
 La nostra webapp è pronta sul server, ma prima di poter accedere dobbiamo aprire le porte corrispondenti.
 

@@ -338,6 +338,9 @@ Dopo che avrà finito di far scorrere tutte le stampe di inizializzazione (potre
 <p class="centered img-container">
 <img class="centered w80p" title="Remote-SSH" alt="Remote-SSH" src="assets/remote-docker-up.png">
 </p>
+<blockquote>
+<p>Per chiudere l'applicazione, dovete lanciare il comando <code>docker-compose down</code>.</p>
+</blockquote>
 <h3><a class="header" href="#aprire-le-porte-nellistanza-ec2" id="aprire-le-porte-nellistanza-ec2">Aprire le porte nell'istanza EC2</a></h3>
 <p>La nostra webapp è pronta sul server, ma prima di poter accedere dobbiamo aprire le porte corrispondenti.</p>
 <p>Sicuramente vogliamo aprire le porte 80 e 443 per accedere in HTTP e HTTPS. Inoltre, in questo progetto ci sono diverse porte di debug aperte tra 8080 e 8099. Per fortuna con AWS possiamo aprirle tutte in un colpo solo. </p>
