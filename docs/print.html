@@ -664,46 +664,189 @@ Controllare che la vostra chiave privata sia all'interno della cartella <code>.s
 <p class="centered img-container">
 <img class="centered w80p" title="Remote-SSH" alt="Remote-SSH" src="04-deploy/assets/ec2-connect.png">
 </p>
-<ol start="4">
-<li>tornate sulla barra di SSH Targets, cliccate ora sulla rotella e cliccate sulla prima voce</li>
-<li>modificare il percorso della vostra chiave con il path completo del file, ovvero <code>C:\Users\NomeUtente\.ssh\nomechiave.pem</code></li>
-</ol>
-<p class="centered img-container">
-<img class="centered w80p" title="Remote-SSH" alt="Remote-SSH" src="04-deploy/assets/ec2-config.png">
-</p>
 <p><strong>Checkpoint</strong>
-A questo punto dovete avere un target pronto per connettervi.</p>
+Tra i target SSH deve comparire la nuova macchina appena creata.</p>
 <p class="centered img-container">
 <img class="centered w80p" title="Remote-SSH" alt="Remote-SSH" src="04-deploy/assets/vscode-target.png">
+</p>
+<ol start="4">
+<li>sulla barra di SSH Targets, cliccare sulla rotella e cliccate sulla prima voce</li>
+<li>modificare il campo <code>IdentityFile</code> con il percorso completo della vostra chiave, ovvero <code>C:\Users\NomeUtente\.ssh\nomechiave.pem</code></li>
+<li>modificate il campo <code>Host</code> e mettete il vostro cognome</li>
+</ol>
+<p><strong>Checkpoint</strong>
+Il file di configurazione dovrebbe apparire ora in modo simile a questo.</p>
+<p class="centered img-container">
+<img class="centered w80p" title="Remote-SSH" alt="Remote-SSH" src="04-deploy/assets/vscode-config.png">
 </p>
 <h3><a class="header" href="#connettersi-alla-macchina-remota" id="connettersi-alla-macchina-remota">Connettersi alla macchina remota</a></h3>
 <p>Da VSCode, connettetevi al target appena creato premendo sulla piccola icona con la finestra ed il + vicino al nome del target. Vi si aprirà una nuova finestra con una sessione di VSCode sulla macchina remota.</p>
 <p>Aprite un terminale da VSCode.</p>
 <p><strong>Checkpoint</strong>
-Controllate di avere una finestra del genere e che l'utente remoto da terminale si ec2-user.</p>
+Controllate di avere una finestra del genere e che l'utente remoto da terminale sia <code>ec2-user</code>.</p>
 <p class="centered img-container">
 <img class="centered w80p" title="Remote-SSH" alt="Remote-SSH" src="04-deploy/assets/vscode-remote.png">
 </p>
-<h2><a class="header" href="#configurare-listanza" id="configurare-listanza">Configurare l'istanza</a></h2>
-<p>Per configurare l'istanza, la prima volta fate come segue.</p>
-<pre><code>sudo yum update -y
+<h4><a class="header" href="#troubleshooting" id="troubleshooting">Troubleshooting</a></h4>
+<p>Su <em>Windows</em>, anche se avete fatto tutto giusto, vi potrebbe comparire una finestra di errore con scritto &quot;errore PATH&quot; o &quot;SSH non trovato&quot;. Il problema è probabilmente che VSCode non riesce a trovare l'eseguibile corretto per <code>ssh</code>. </p>
+<p>Per risolvere il problema fate le seguenti operazioni:</p>
+<ol>
+<li>se non l'avete già fatto, installate <a href="https://git-scm.com/download/win">git-bash</a></li>
+<li>dal menu start, cliccate con il tasto destro sull'eseguibile &quot;Git Bash&quot; appena installato e selezionate &quot;Proprietà&quot;</li>
+<li>copiate il percorso del file dell'eseguibile (qualcosa tipo <code>C:\Users\NomeUtente\AppData\Local\Git\</code>) e incollatelo nella barra di Esplora Risorse</li>
+<li>navigate dentro le cartelle <code>usr</code> e <code>bin</code></li>
+<li>dentro la cartella bin, controllate che ci sia il file <code>ssh.exe</code></li>
+<li>selezionate il percorso di questa cartella</li>
+<li>ora aprite VSCode e andate sulle impostazioni premendo la rotella in basso a sinistra e selezionando &quot;Settings&quot;</li>
+<li>nella barra di ricerca delle impostazioni, scrivete <code>remote.ssh.path</code></li>
+<li>nel campo che vi si aprirà, incollate il path che avevate copiato poco fa e aggiungete anche <code>ssh.exe</code> alla fine</li>
+</ol>
+<p>Il risultato dovrebbe essere qualcosa del genere.</p>
+<p class="centered img-container">
+<img class="centered w80p" title="Remote-SSH" alt="Remote-SSH" src="04-deploy/assets/vscode-git.png">
+</p>
+<h2><a class="header" href="#configurare-listanza-al-primo-avvio" id="configurare-listanza-al-primo-avvio">Configurare l'istanza al primo avvio</a></h2>
+<p>Ora che siamo riusciti a connetterci l'istanza, dobbiamo configurarla per i nostri scopi.</p>
+<p>Quello che andiamo a fare, è installare sulla macchina remota gli eseguibili che ci serviranno per completare il progetto:</p>
+<ul>
+<li>docker</li>
+<li>docker-compose</li>
+<li>git</li>
+</ul>
+<p>Per configurare l'istanza, la prima volta copiate i seguenti comandi.</p>
+<p>Suggerimento: nel riquadro qui sotto, in alto a destra trovate l'icona delle pagine per copiare tutti i comandi in una volta sola.</p>
+<pre><code class="language-sh">sudo yum update -y
 
-# install docker and docker-compose
+# install docker
 sudo yum install docker -y
+# add docker to the admin group, so we can use it without sudo
 sudo groupadd docker
-sudo usermod -aG docker $USER # logout per avere effetto
-</code></pre>
-<p><strong>CHECKPOINT</strong> Eseguite il comando <code>docker --version</code> e assicuratevi di non avere un messaggio di errore.</p>
-<p>Fate il logout e riavviate la macchina remota.</p>
-<p>Eseguite i seguenti comandi:</p>
-<pre><code class="language-sh">sudo systemctl start docker
+sudo usermod -aG docker $USER
+# add docker to startup services
+sudo chkconfig docker on
+sudo systemctl enable docker
+# install docker-compose
 sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
-docker-compose --version
-
 # install git
 sudo yum install git -y
 </code></pre>
+<p><strong>CHECKPOINT</strong> Eseguite i seguenti comandi qui sotto e assicuratevi di non avere messaggi di errore.</p>
+<pre><code class="language-sh">docker --version
+docker-compose --version
+git --version
+</code></pre>
+<p class="centered img-container">
+<img class="centered w80p" title="Remote-SSH" alt="Remote-SSH" src="04-deploy/assets/remote-versions.png">
+</p>
+<h3><a class="header" href="#riavvio-della-macchina" id="riavvio-della-macchina">Riavvio della macchina</a></h3>
+<p>Per fare in modo che le impostazioni abbiano effetto, eseguite le seguenti operazioni:</p>
+<ul>
+<li>chiudete la finestra di VSCode connessa alla macchina remota</li>
+<li>dalla dashboard di EC2, selezionare Actions-&gt;Instance State-&gt;Reboot (<strong>non</strong> fermate o terminate la macchina, altrimenti il vostro dns pubblico cambierà!)</li>
+</ul>
+<p class="centered img-container">
+<img class="centered w80p" title="Remote-SSH" alt="Remote-SSH" src="04-deploy/assets/ec2-reboot.png">
+</p>
+<ul>
+<li>aspettate qualche secondo che si riavvii la macchina</li>
+<li>da VSCode, riconnettersi alla macchina remota</li>
+</ul>
+<p><strong>Checkpoint</strong>
+Eseguite il seguente comando:</p>
+<pre><code class="language-sh">docker image list
+</code></pre>
+<p>e controllate di avere un output del genere:</p>
+<p class="centered img-container">
+<img class="centered w80p" title="Remote-SSH" alt="Remote-SSH" src="04-deploy/assets/remote-docker-list.png">
+</p>
+<blockquote>
+<p>Se una volta ricollegati alla macchina remota con VSCode, il comando docker image list non dovesse funzionare, lanciate il comando <code>sudo systemctl start docker</code> e riprovate</p>
+</blockquote>
+<p>Se tutto va bene, avete il vostro ambiente pronto e configurato!</p>
+<h2><a class="header" href="#installazione-del-progetto-template" id="installazione-del-progetto-template">Installazione del progetto template</a></h2>
+<p>Ora è il momento di scaricare un progetto template per fare le nostre prove di HTML5+PHP+MySQL.</p>
+<h3><a class="header" href="#creazione-del-repository" id="creazione-del-repository">Creazione del repository</a></h3>
+<p>Prima di tutto create un nuovo repository partendo da un mio template.</p>
+<ul>
+<li>fate il login su GitHub</li>
+<li>andate su <a href="https://github.com/wbigger/html5-php-sql">github.com/wbigger/html5-php-sql</a></li>
+<li>cliccate su &quot;Use this template&quot;</li>
+</ul>
+<p class="centered img-container">
+<img class="centered w80p" title="Remote-SSH" alt="Remote-SSH" src="04-deploy/assets/github-template.png">
+</p>
+<ul>
+<li>chiedete al vostro professore quale nome dare al repository</li>
+<li>nella descrizione, mettete anno scolastico, classe e materia</li>
+<li>lasciate le impostazioni su <em>Public</em></li>
+<li>create il repository</li>
+<li>dal solito bottone verde &quot;Clone or Download&quot;, copiate il link al vostro nuovo repo</li>
+</ul>
+<p><strong>Checkpoint</strong> Dovete avere un vostro repository simile a questa pagina.</p>
+<p class="centered img-container">
+<img class="centered w80p" title="Remote-SSH" alt="Remote-SSH" src="04-deploy/assets/github-template-2.png">
+</p>
+<h3><a class="header" href="#clone-del-repository" id="clone-del-repository">Clone del repository</a></h3>
+<p>Dalla finestra di VSCode connessa con la vostra macchina remota, andate sul terminale e digitate:</p>
+<pre><code class="language-sh">git clone &lt;nomeRepository&gt;
+</code></pre>
+<p>Ora sempre da VSCode andate su File-&gt;Apri e selezionate la cartella del repository appena creato.</p>
+<p>*<strong>Checkpoint</strong> Controllate che le aree cerchiate in rosso corrispondano ai nomi che avete dato al vostro progetto.</p>
+<p class="centered img-container">
+<img class="centered w80p" title="Remote-SSH" alt="Remote-SSH" src="04-deploy/assets/remote-git.png">
+</p>
+<h2><a class="header" href="#avvio-della-web-application" id="avvio-della-web-application">Avvio della web application</a></h2>
+<p>Ora abbiamo finalmente tutti i pezzi necessari per avviare la nostra web application.</p>
+<p>Dalla finestra remota di VSCode, nel terminale, digitate:</p>
+<pre><code class="language-sh">docker-compose up
+</code></pre>
+<p>La prima volta ci metterà un po' di più perché vi scaricherà le dipendenze del progetto (nginx, MySql, PHP, PHP MyAdmin). </p>
+<p><strong>Checkpoint</strong>
+Dopo che avrà finito di far scorrere tutte le stampe di inizializzazione (potrebbe metterci un po'), il vostro terminale deve essere simile all'immagine seguente.</p>
+<p class="centered img-container">
+<img class="centered w80p" title="Remote-SSH" alt="Remote-SSH" src="04-deploy/assets/remote-docker-up.png">
+</p>
+<h3><a class="header" href="#aprire-le-porte-nellistanza-ec2" id="aprire-le-porte-nellistanza-ec2">Aprire le porte nell'istanza EC2</a></h3>
+<p>La nostra webapp è pronta sul server, ma prima di poter accedere dobbiamo aprire le porte corrispondenti.</p>
+<p>Sicuramente vogliamo aprire le porte 80 e 443 per accedere in HTTP e HTTPS. Inoltre, in questo progetto ci sono diverse porte di debug aperte tra 8080 e 8099. Per fortuna con AWS possiamo aprirle tutte in un colpo solo. </p>
+<p>Andate sulla dashboard AWS, selezionate l'istanza e nel pannello in basso selezionate il vostro security group.</p>
+<p class="centered img-container">
+<img class="centered w80p" title="Remote-SSH" alt="Remote-SSH" src="04-deploy/assets/ec2-security-1.png">
+</p>
+<p>Cliccate nel pannello in basso su &quot;Inbound&quot; e quindi &quot;Edit&quot;.</p>
+<p class="centered img-container">
+<img class="centered w80p" title="Remote-SSH" alt="Remote-SSH" src="04-deploy/assets/ec2-security-2.png">
+</p>
+<p>Aprite le porte come indicato nella figura qui sotto.</p>
+<p class="centered img-container">
+<img class="centered w80p" title="Remote-SSH" alt="Remote-SSH" src="04-deploy/assets/ec2-security-3.png">
+</p>
+<p>Salvate le modifiche.</p>
+<p><strong>Checkpoint</strong> Il vostro security group dovrebbe apparire ora come segue.</p>
+<p class="centered img-container">
+<img class="centered w80p" title="Remote-SSH" alt="Remote-SSH" src="04-deploy/assets/ec2-security-4.png">
+</p>
+<h2><a class="header" href="#verifica-finale" id="verifica-finale">Verifica finale</a></h2>
+<p>Ora la vostra web app è pronta sul web!</p>
+<p>Dalla dashboard di AWS, copiate il DNS pubblico della vostra macchina e incollatelo in un browser. In questo momento il server è configurato per funzionare con la porta 8097, quindi ricordatevi di metterla nell'indirizzo.</p>
+<p class="centered img-container">
+<img class="centered w80p" title="Remote-SSH" alt="Remote-SSH" src="04-deploy/assets/webapp-deploy.png">
+</p>
+<p>Da qui in poi possiamo cominciare a modificare il nostro progetto e vedere le modifiche live sul world wide web!</p>
+<h2><a class="header" href="#riepilogo" id="riepilogo">Riepilogo</a></h2>
+<p>Rivediamo cosa abbiamo fatto.</p>
+<ul>
+<li>abbiamo creato una macchina virtuale sul cloud con Amazon Web Services</li>
+<li>abbiamo configurato Visual Studio Code per accedere a questa istanza</li>
+<li>abbiamo configurato l'istanza con i comandi che ci servivano, in particolare <code>docker</code>, <code>docker-compose</code> e <code>git</code></li>
+<li>abbiamo creato un repository su GitHub partendo da un template</li>
+<li>abbiamo clonato il repository sulla macchina remota</li>
+<li>abbiamo lanciato il progetto template</li>
+<li>docker si è scaricato le dipendenze del nostro progetto template (<code>nginx</code>,<code>PHP</code>, <code>MySQL</code>, <code>PHP MyAdmin</code>)</li>
+<li>abbiamo aperto le porte necessarie nella nostra macchina remota</li>
+<li>la webapp è pronta all'uso</li>
+</ul>
 
                     </main>
 
