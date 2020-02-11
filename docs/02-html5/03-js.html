@@ -154,37 +154,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <style>
-.centered {
-	text-align: center;
-}
-img.right_side {
-  float: right;
-  margin:5px 5px 0px 20px;
-  width: 30%;
-}
-img.left_side {
-  float:left;
-  margin:5px 20px 0px 5px;
-  width: 20%;
-}
-
-p.clear {
-  clear: both;  
-}
-p.img-container {
-  margin-bottom: 15px;
-
-
-}
-
-p.img-container::after {
-  margin-bottom: 15px;
-  overflow: hidden;
-  clear: both;
-}
-</style>
-<h1><a class="header" href="#javascript" id="javascript">JavaScript</a></h1>
+                        <h1><a class="header" href="#javascript" id="javascript">JavaScript</a></h1>
 <p>La pagina fin qui creata è <em>statica</em>, ovvero i dati degli eventi sono scritti in maniera fissa, non modificabile, all'interno del file HTML. Chiaramente non è quello che vogliamo, perché il nostro obiettivo è che ogni volta che l'utente apre la pagina, gli mostri gli eventi aggiornati in quel momento: vogliamo una pagina <em>dinamica</em>. Per fare questo ci serve l'ultimo componente di HTML5: JavaScript.</p>
 <h2><a class="header" href="#un-po-di-storia" id="un-po-di-storia">Un po' di storia</a></h2>
 <p class="img-container">
@@ -217,11 +187,11 @@ p.img-container::after {
 </ul>
 </blockquote>
 <blockquote>
-<p>Come sempre in VSCode, digitando script:src si avvia l'autocompletamento.</p>
+<p>Come sempre in VSCode, digitando script:src si avvia l'auto-completamento.</p>
 </blockquote>
 <p>Avviando la pagina otteniamo la seguente cosa.</p>
 <p align="center">
-<img title="js-alert" src="assets/js-alert.png">
+<img class="w80p" title="js-alert" src="assets/js-alert.png">
 </p>
 <p>Bene, il file JavaScript è collegato correttamente! 🥳</p>
 <p>Prima di andare avanti, vogliamo semplificarci un po' le cose usando una libreria molto diffusa che permette di ridurre drasticamente il codice da scrivere per eseguire operazioni comuni: jQuery.</p>
@@ -231,7 +201,7 @@ p.img-container::after {
 <h2><a class="header" href="#importare-jquery" id="importare-jquery">Importare jQuery</a></h2>
 <p><a href="https://jquery.com/">jQuery</a> (pronuncia <em>jeiquiri</em>) è una delle librerie più diffuse per JavaScript, perché permette di semplificare e velocizzare operazioni che altrimenti richiederebbero un bel po' di linee di codice. Per scaricare l'ultima versione, andate sul sito ufficiale, sezione Download, e selezionate la versione &quot;Download the compressed, production jQuery&quot;. Se volete scaricare il file, vi conviene premere con il tasto destro sul link e selezionare &quot;Salva destinazione con nome...&quot; o l'equivalente nel vostro broser. Come al solito, salvate il file nella stessa cartella dove si trova il file html.</p>
 <p align="center">
-<img title="js-jquery" src="assets/js-jquery.png">
+<img class="w80p" title="js-jquery" src="assets/js-jquery.png">
 </p>
 <blockquote>
 <p>Attenzione: la semplificazione offerta da jQuery non è gratis. Questa libreria è piuttosto pesante ed il browser ci metterà un po' di tempo a caricarla, con il rischio di inficiare l'esperienza utente. Quando diventerete sviluppatori front-end professionisti, dovrete fare attenzione anche a queste cose. Il codice JavaScript &quot;puro&quot;, senza l'uso di nessuna libreria, è anche detto <em>VanillaJS</em>; <a href="http://vanilla-js.com/">qui</a> trovate un sito scherzoso sull'argomento.</p>
@@ -273,7 +243,7 @@ $(document).ready(init);
 </blockquote>
 <p>Se ora ricarichiamo la pagina, otteniamo un comportamento molto simile al procedente.</p>
 <p align="center">
-<img title="js-alert" src="assets/js-alert.png">
+<img class="w80p" title="js-alert" src="assets/js-alert.png">
 </p>
 <h2><a class="header" href="#scope-di-funzione" id="scope-di-funzione">Scope di funzione</a></h2>
 <p>Prima di andare avanti, è bene impostare correttamente il file JavaScript. Questo linguaggio infatti lascia moltissima libertà ai programmatori nell'organizzazione del codice, e questa è una buona cosa perché è possibile creare librerie e framework molto potenti, ma senza un po' di disciplina si finsce con lo scrivere del codice che è completamente non mantenibile e soggetto ad infiniti tipi di bug. Rimandiamo al link all'inizio di questa pagina per una syle-guide.</p>
@@ -343,7 +313,7 @@ $(document).ready(app.init);
 </ul>
 <p>Per aprire gli strumenti sviluppatori, il modo più semplice è cliccare con il tasto destro da qualche parte nella pagina e selezionare &quot;Analizza elemento&quot; su Firefox, &quot;Ispeziona&quot; su Chrome e Safari, etc.</p>
 <p align="center">
-<img title="js-devtools" src="assets/js-devtools.png">
+<img class="w80p" title="js-devtools" src="assets/js-devtools.png">
 </p>
 <h2><a class="header" href="#uso-della-console" id="uso-della-console">Uso della console</a></h2>
 <p>L'uso della funzione <code>alert()</code> per comunicare informazioni di debug può risultare molto scomoda perché interrompe le operazioni dell'utente. Per evitare questo problema, potete usare la funzione <code>console.log()</code> che stampa sulla console di debug del browser.</p>
@@ -352,7 +322,7 @@ $(document).ready(app.init);
 </code></pre>
 <p>Risulterà nella seguente stampa di debug:</p>
 <p align="center">
-<img title="js devtools console log" src="assets/js-devtools-console.png">
+<img class="w80p"  title="js devtools console log" src="assets/js-devtools-console.png">
 </p>
 
                     </main>

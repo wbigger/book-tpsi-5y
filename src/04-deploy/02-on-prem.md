@@ -1,7 +1,10 @@
 # On-Premises
 On-premises significa che l'azienda prima di tutto allestisce un locale (ovvero una stanza) nei propri uffici come sala server, e la fornisce di rack, raffreddamento, impianti di continuità elettrica (in caso di interruzione della corrente elettrica), controllo fisico degli accessi (es. chiave, badge). Quindi acquista delle macchine da mettere nei rack: routers, switch, firewall, server, etc.
 
-[Inserire qui: foto della sala server del Marconi]
+<p class="centered img-container">
+<img class="centered w80p" title="Marconi sala server" alt="Marconi sala server" src="assets/onprem.jpg">
+<figcaption class="centered">Sala server del Marconi</figcaption>
+</p>
 
 Infine dovrà assumere un sistemista per la gestione e manutenzione delle macchine, o stipulare un contratto con un'azienda esterna.
 
