@@ -8,6 +8,21 @@ La prima volta che lanciamo l'applicazione ci viene chiesto di registrarci, ma p
 
 Una volta aperta l'applicazione, creiamo una nuova collezione dando un nome a piacere, ad esempio "Book HTML5"
 
+## Formato URL
+L'URL (Universal Resource Locator) è un identificatore che ci permette di identificare in maniera univoca una _risorsa_ in tutta la rete web.
+
+Il suo formato è:
+
+```
+protocollo://host[:porta]</percorso>[?querystring][#fragment]
+```
+
+Ad esempio:
+```
+http://      www.recipepuppy.com  /api/              ?i=onions
+protocollo   host (IP o dominio)  percorso-risorsa   query
+```
+
 ## GET
 All'interno della collezione appena creata, aggiungiamo una "Request" che possiamo chiamare con il nome del servizio che stiamo interrogando.
 
@@ -37,3 +52,8 @@ Qui una lista di URL che avete trovato nel compito assegnato:
 - [http://NflArrest.com/api/v1/crime](http://NflArrest.com/api/v1/crime)
 - [http://ergast.com/api/f1/drivers.json?callback=myParser](http://ergast.com/api/f1/drivers.json?callback=myParser)
 
+## Formato JSON
+
+Lo standard del _formato di stringhe_ per lo scambio informazioni sul web oggi è sicuramente JSON (JavaScript Object Notation).
+
+Studiare da pag.45 a pag.49 (creare oggetti JSON escluso), oppure cercare JSON sul manuale per l'esame e studiate i relativi paragrafi.

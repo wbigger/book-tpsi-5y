@@ -173,8 +173,33 @@ sapere indispensabile per chi vuole diventare un informatico.</p>
 <h2><a class="header" href="#premessa" id="premessa">Premessa</a></h2>
 <p>In Informatica state imparando a programmare una singola macchina con vari linguaggi di programmazione (C++/Java,PHP) e a connettervi ad un database MySQL. Con Sistemi e Reti state imparando a configurare una rete di computer e connettervi in modo efficiente e sicuro ad un computer remoto.</p>
 <p>Scopo di TPSI di quest'anno è la realizzazione di un servizio web, che quindi prevede la cooperazione di diverse tecnologie, linguaggi, macchine, dispositivi. Cercheremo di imparare cosa significa sistema distribuito e, soprattutto, come si realizza.</p>
-<h2><a class="header" href="#sistemi-distribuiti-qualche-definizione" id="sistemi-distribuiti-qualche-definizione">Sistemi distribuiti: qualche definizione</a></h2>
-<p>Work in progress.</p>
+<h2><a class="header" href="#sistemi-monolitici-e-distribuiti" id="sistemi-monolitici-e-distribuiti">Sistemi monolitici e distribuiti</a></h2>
+<p>Immaginate di dover scrivere un documento di testo con Microsoft Word (versione classica). Accendo il computer, avvio l'applicazione, scrivo il mio documento, lo salvo e lo stampo. Nella redazione del mio documento, ci sono poche cose che possono andare storto: se il mio computer non ha particolari problemi dovrebbe andare tutto liscio. Se voglio inviarlo a qualcuno, lo salvo su una chiavetta o glielo invio per posta elettronica, Whatsapp o Telegram. Che succede però se il mio computer si rompe? Se non ho fatto backup recenti (cosa che succede regolarmente), rischio di perdere tutto o parte del lavoro. E se non ho il computer con me? Non posso lavorare sul mio file.</p>
+<p>Ora immaginiamo di scrivere lo stesso documento con Google Docs. Accendo il computer, <em>apro il browser</em>, <em>mi connetto ad internet</em>, <em>faccio l'accesso a Google</em>, quindi apro Docs e comincio a scrivere. Se voglio condividere il file, posso inviare il link impostando adeguatamente i permessi di accesso. Se non ho il computer con me, posso usare un qualsiasi altro computer. Ci sono diverse cose che possono andare storto prima di riuscire a scrivere il documento: internet non funziona, mi sono dimenticato la password, etc. Però ho il mio file disponibile sempre e con una bassissima probabilità di perderlo.</p>
+<p>Nel primo caso, ci troviamo davanti un'applicazione <em>monolitica</em>, o <em>single tier</em>: tutto risiede in una macchina. Nel secondo caso ho un'applicazione <em>distribuita</em>, o <em>multi tiers</em>: per fruire del servizio ho bisogno di più macchine (almeno due: la mia e il server di Google Docs).</p>
+<h2><a class="header" href="#una-definizione" id="una-definizione">Una definizione</a></h2>
+<p>Esistono varie definizioni, qui ne forniamo una:</p>
+<p>&quot;Un sistema distribuito consiste di un insieme di calcolatori autonomi, connessi fra loro tramite una rete e un middleware di distribuzione, che permette ai computer di coordinare le loro attività e di condividere le risorse del sistema, in modo che gli utenti percepiscano il sistema come un unico servizio integrato di calcolo.&quot;
+(<a href="http://www0.cs.ucl.ac.uk/staff/ucacwxe/lectures/ds98-99/dsee3.pdf">Wolfgang Emmerich, 1997</a>)</p>
+<p>Nella definizione voglio sottolineare come, per funzionare, un sistema distribuito deve:</p>
+<ul>
+<li>prevedere più computer che si coordinano fra di loro</li>
+<li>usare risorse condivise</li>
+</ul>
+<h2><a class="header" href="#architettura-3-tiers" id="architettura-3-tiers">Architettura 3-tiers</a></h2>
+<p>L'architettura che ci interessa particolarmente è quella con 3 strati, chiamati tecnicamente in inglese &quot;tiers&quot;.</p>
+<ol>
+<li>Client (es. browser)</li>
+<li>Web server/Application server (es. nginx/apache + PHP)</li>
+<li>Database (es. MySQL, MariaDB, Oracle)</li>
+</ol>
+<p>Ci si può chiedere perché usare due macchine per i server, anziché una sola: ci sono vari motivi, ma principalmente perché:</p>
+<ul>
+<li>il database contiene dati riservati e deve essere più protetto, quindi meglio che stia dietro un'altro strato che fa da intermediario</li>
+<li>il database deve risiedere in delle macchine con dei requisiti di affidabilità e ridondanza molto elevati, quindi molto costose, ed è quindi più vantaggioso economicamente separarlo dal web/application server</li>
+</ul>
+<h2><a class="header" href="#da-studiare" id="da-studiare">Da studiare</a></h2>
+<p>Cercare sul manuale per l'esame i sistemi distribuiti e studiare i relativi paragrafi.</p>
 <h1><a class="header" href="#html5" id="html5">HTML5</a></h1>
 <p>Il World Wide Web è nato nel 1989 sotto la guida del londinese <a href="https://en.wikipedia.org/wiki/Tim_Berners-Lee">Tim Burners-Lee</a>: una rete di pagine di testo collegate tra di loro. La sintassi utilizzata per scrivere queste pagine è l'HTML, che trova una sua prima definizione standard nel 1991.</p>
 <p>Nel 1994 Tim Burners-Lee fonda il <a href="https://www.w3.org/">w3consortium</a> (w3c) con lo scopo di standardizzare le nuove tecnologie emergenti per il World Wide Web. Gli standard per HTML continuano fino al 2001, quando differenti opinioni si scontrano: da una parte w3c propendeva per lo standard XHTML, dall'altra un gruppo di persone ed aziende stava proponendo uno standard chiamato HTML5 e formato da 3 elementi: HTML+CSS+JS. La diatriba si concluderà nel 2014 con la pubblicazione dello standard HTML5 da parte del w3c.</p>
@@ -566,6 +591,15 @@ p.img-container::after {
 <p>Per risolvere questo problema, esistono delle suite di test specifiche per le chiamate HTTP. Una delle applicazioni più usate al momento è <a href="https://www.getpostman.com/">Postman</a>.</p>
 <p>La prima volta che lanciamo l'applicazione ci viene chiesto di registrarci, ma possiamo saltare questo passaggio premendo su &quot;skip&quot; in basso.</p>
 <p>Una volta aperta l'applicazione, creiamo una nuova collezione dando un nome a piacere, ad esempio &quot;Book HTML5&quot;</p>
+<h2><a class="header" href="#formato-url" id="formato-url">Formato URL</a></h2>
+<p>L'URL (Universal Resource Locator) è un identificatore che ci permette di identificare in maniera univoca una <em>risorsa</em> in tutta la rete web.</p>
+<p>Il suo formato è:</p>
+<pre><code>protocollo://host[:porta]&lt;/percorso&gt;[?querystring][#fragment]
+</code></pre>
+<p>Ad esempio:</p>
+<pre><code>http://      www.recipepuppy.com  /api/              ?i=onions
+protocollo   host (IP o dominio)  percorso-risorsa   query
+</code></pre>
 <h2><a class="header" href="#get" id="get">GET</a></h2>
 <p>All'interno della collezione appena creata, aggiungiamo una &quot;Request&quot; che possiamo chiamare con il nome del servizio che stiamo interrogando.</p>
 <p align="center">
@@ -593,6 +627,9 @@ p.img-container::after {
 <li><a href="http://NflArrest.com/api/v1/crime">http://NflArrest.com/api/v1/crime</a></li>
 <li><a href="http://ergast.com/api/f1/drivers.json?callback=myParser">http://ergast.com/api/f1/drivers.json?callback=myParser</a></li>
 </ul>
+<h2><a class="header" href="#formato-json" id="formato-json">Formato JSON</a></h2>
+<p>Lo standard del <em>formato di stringhe</em> per lo scambio informazioni sul web oggi è sicuramente JSON (JavaScript Object Notation).</p>
+<p>Studiare da pag.45 a pag.49 (creare oggetti JSON escluso), oppure cercare JSON sul manuale per l'esame e studiate i relativi paragrafi.</p>
 <h1><a class="header" href="#deploy-dislocazione" id="deploy-dislocazione">Deploy (dislocazione)</a></h1>
 <p>In questo capitolo vedremo come fare il deploy (dislocazione) della nostra applicazione nei casi più comuni: cloud e on-premises.</p>
 <h2><a class="header" href="#matrice-delle-dislocazioni" id="matrice-delle-dislocazioni">Matrice delle dislocazioni</a></h2>
