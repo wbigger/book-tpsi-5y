@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Database - TPSI - Quinto anno</title>
+        <title>Domini - TPSI - Quinto anno</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-tiers/index.html"><strong aria-hidden="true">2.</strong> Architetture multi-tiers</a></li><li class="expanded "><a href="../02-html5/index.html"><strong aria-hidden="true">3.</strong> HTML5</a></li><li><ol class="section"><li class="expanded "><a href="../02-html5/01-html.html"><strong aria-hidden="true">3.1.</strong> HTML</a></li><li class="expanded "><a href="../02-html5/02-css.html"><strong aria-hidden="true">3.2.</strong> CSS</a></li><li class="expanded "><a href="../02-html5/03-js.html"><strong aria-hidden="true">3.3.</strong> JavaScript</a></li></ol></li><li class="expanded "><a href="../03-database/index.html" class="active"><strong aria-hidden="true">4.</strong> Database</a></li><li><ol class="section"><li class="expanded "><a href="../03-database/03-crud.html"><strong aria-hidden="true">4.1.</strong> CRUD</a></li><li class="expanded "><a href="../03-database/04-postman.html"><strong aria-hidden="true">4.2.</strong> Postman</a></li></ol></li><li class="expanded "><a href="../04-deploy/index.html"><strong aria-hidden="true">5.</strong> Deploy</a></li><li><ol class="section"><li class="expanded "><a href="../04-deploy/01-cloud.html"><strong aria-hidden="true">5.1.</strong> Cloud</a></li><li class="expanded "><a href="../04-deploy/01-cloud-tutorial.html"><strong aria-hidden="true">5.2.</strong> Cloud - tutorial</a></li><li class="expanded "><a href="../04-deploy/02-on-prem.html"><strong aria-hidden="true">5.3.</strong> On Premises</a></li><li class="expanded "><a href="../04-deploy/03-hybrid.html"><strong aria-hidden="true">5.4.</strong> Ibrido</a></li><li class="expanded "><a href="../04-deploy/04-domains.html"><strong aria-hidden="true">5.5.</strong> Domini</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-tiers/index.html"><strong aria-hidden="true">2.</strong> Architetture multi-tiers</a></li><li class="expanded "><a href="../02-html5/index.html"><strong aria-hidden="true">3.</strong> HTML5</a></li><li><ol class="section"><li class="expanded "><a href="../02-html5/01-html.html"><strong aria-hidden="true">3.1.</strong> HTML</a></li><li class="expanded "><a href="../02-html5/02-css.html"><strong aria-hidden="true">3.2.</strong> CSS</a></li><li class="expanded "><a href="../02-html5/03-js.html"><strong aria-hidden="true">3.3.</strong> JavaScript</a></li></ol></li><li class="expanded "><a href="../03-database/index.html"><strong aria-hidden="true">4.</strong> Database</a></li><li><ol class="section"><li class="expanded "><a href="../03-database/03-crud.html"><strong aria-hidden="true">4.1.</strong> CRUD</a></li><li class="expanded "><a href="../03-database/04-postman.html"><strong aria-hidden="true">4.2.</strong> Postman</a></li></ol></li><li class="expanded "><a href="../04-deploy/index.html"><strong aria-hidden="true">5.</strong> Deploy</a></li><li><ol class="section"><li class="expanded "><a href="../04-deploy/01-cloud.html"><strong aria-hidden="true">5.1.</strong> Cloud</a></li><li class="expanded "><a href="../04-deploy/01-cloud-tutorial.html"><strong aria-hidden="true">5.2.</strong> Cloud - tutorial</a></li><li class="expanded "><a href="../04-deploy/02-on-prem.html"><strong aria-hidden="true">5.3.</strong> On Premises</a></li><li class="expanded "><a href="../04-deploy/03-hybrid.html"><strong aria-hidden="true">5.4.</strong> Ibrido</a></li><li class="expanded "><a href="../04-deploy/04-domains.html" class="active"><strong aria-hidden="true">5.5.</strong> Domini</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -154,23 +154,30 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#database" id="database">Database</a></h1>
-<p>In questo capitolo parleremo di come accedere ed usare un database con una architettura a tre tiers.</p>
+                        <h1><a class="header" href="#domini" id="domini">Domini</a></h1>
+<p>Per accedere al nostro servizio web, abbiamo bisogno di un dominio che ci permetta di raggiungerlo.</p>
+<p>Il concetto di associare un nome (o dominio) ad un indirizzo IP risale al 1983 ed è diventato standard internazionale nel 1987, quindi quando Tim Berners Lee inventò il web nel 1989, era già una tecnologia diffusa.</p>
+<p>Lo scopo iniziale dei domini era quella di usare dei nomi mnemonici per le macchine, al posto degli indirizzi IP, molto difficili da ricordare.</p>
+<p>In seguito sono stati usati per anche altri scopi: in particolare, è possibile cambiare l'IP dietro ad un nome di dominio, senza che l'utente se ne accorga, in modo da poter aggiornare o cambiare facilmente un servizio. Oppure è possibile associare IP diversi in aree geografiche diverse: com'è ragionevole, google.com punta a server diversi se ti trovi in Italia o negli Stati Uniti.</p>
+<p>Oggi i domini hanno un altro ruolo fondamentale: servono per instaurare <em>fiducia</em> nel cliente finale. Infatti, il mondo di Internet (come quello reale, d'altra parte) è pieno di siti che offrono servizi o prodotti simili e per cui è difficile distinguerne la qualità e l'autenticità. La fiducia è sempre alla base di qualsiasi relazione.</p>
+<p>Per questo la tecnologia HTTPS, che offre connessioni sicure con un sito, è strettamente legata al nome del dominio. Quello che infatti dobbiamo fare è assicurarci che la nostra <em>fiducia</em> sia riposta nel giusto sito, e non in uno contraffatto.</p>
+<h2><a class="header" href="#registrazione-di-un-dominio" id="registrazione-di-un-dominio">Registrazione di un dominio</a></h2>
+<p>Per cominciare a creare il proprio business e la propria relazione con il cliente, uno dei primi passi è registrare il proprio dominio. </p>
+<p>Esistono molti siti che offrono questo servizio, chiamati &quot;registrar&quot;, ad esempio noi abbiamo usato <a href="godaddy.com">GoDaddy</a>, ma è possibile usare AWS, Google, Aruba e tantissimi altre aziende simili.</p>
+<p>Ovviamente, i registrar non decidono quali siti puoi comprare oppure no: seguono le regole che vengono fornite dallo [IANA]
+(https://www.iana.org/), l'ente internazionale che si occupa di gestire fondamentalmente gli indirizzi IP. Lo IANA è un'emanazione dell'ICANN (Internet Corporation for Assigned Names and Numbers), un ente sotto il diretto controllo del Ministero del commercio degli Stati Uniti. </p>
+<p>Per consultare quali sono tutti i domini di primi livello esistenti, la fonte ufficiale è <a href="https://www.iana.org/domains/root/db">questa</a>.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../02-html5/03-js.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../04-deploy/03-hybrid.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
-                        
-                            <a rel="next" href="../03-database/03-crud.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -180,15 +187,11 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../02-html5/03-js.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="../04-deploy/03-hybrid.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
-                
-                    <a href="../03-database/03-crud.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 
             </nav>
 

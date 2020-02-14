@@ -60,6 +60,10 @@ Il panorama dei gestori Cloud, come si può immaginare, è molto variegato e din
 
 In Italia abbiamo [Aruba Cloud](https://www.cloud.it/), che fornisce servizi con particolare attenzione al rispetto delle normative europee.
 
+<p class="centered img-container">
+<img class="centered w80p" title="Cloud chart" alt="Cloud chart" src="assets/cloud-chart.jpeg">
+</p>
+
 ## Amazon Web Services
 Noi utilizzeremo i servizi di Amazon Web Services (abbreviato: AWS), perché è uno dei gestori più utilizzati e grazie da una convenzione, abbiamo del credito gratuito per gli studenti della nostra scuola.
 

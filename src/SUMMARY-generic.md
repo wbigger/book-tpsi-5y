@@ -14,4 +14,5 @@
   - [Cloud - tutorial](./04-deploy/01-cloud-tutorial.md)
   - [On Premises](./04-deploy/02-on-prem.md)
   - [Ibrido](./04-deploy/03-hybrid.md)
+  - [Domini](./04-deploy/04-domains.md)
 
