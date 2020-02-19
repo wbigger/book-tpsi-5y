@@ -21,3 +21,5 @@ Ovviamente, i registrar non decidono quali siti puoi comprare oppure no: seguono
 (https://www.iana.org/), l'ente internazionale che si occupa di gestire fondamentalmente gli indirizzi IP. Lo IANA è un'emanazione dell'ICANN (Internet Corporation for Assigned Names and Numbers), un ente sotto il diretto controllo del Ministero del commercio degli Stati Uniti. 
 
 Per consultare quali sono tutti i domini di primi livello esistenti, la fonte ufficiale è [questa](https://www.iana.org/domains/root/db).
+
+La lista di tutti i registrar accreditati, da cui potete comprare un dominio, la trovate sulla [pagina ufficiale](https://www.icann.org/registrar-reports/accreditation-qualified-list.html) dell'ICANN.
