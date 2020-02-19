@@ -174,8 +174,8 @@
 <h2><a class="header" href="#architettura-3-tiers" id="architettura-3-tiers">Architettura 3-tiers</a></h2>
 <p>L'architettura che ci interessa particolarmente è quella con 3 strati, chiamati tecnicamente in inglese &quot;tiers&quot;.</p>
 <ol>
-<li>Client (es. browser)</li>
-<li>Web server/Application server (es. nginx/apache + PHP)</li>
+<li>Client (es. browser, app nativa)</li>
+<li>Web server + application server (es. nginx/apache + PHP)</li>
 <li>Database (es. MySQL, MariaDB, Oracle)</li>
 </ol>
 <p>Ci si può chiedere perché usare due macchine per i server, anziché una sola: ci sono vari motivi, ma principalmente perché:</p>
@@ -183,6 +183,36 @@
 <li>il database contiene dati riservati e deve essere più protetto, quindi meglio che stia dietro un'altro strato che fa da intermediario</li>
 <li>il database deve risiedere in delle macchine con dei requisiti di affidabilità e ridondanza molto elevati, quindi molto costose, ed è quindi più vantaggioso economicamente separarlo dal web/application server</li>
 </ul>
+<h2><a class="header" href="#architettura-4-tiers" id="architettura-4-tiers">Architettura 4-tiers</a></h2>
+<p>In molte situazioni può essere utile separare ulteriormente il web server e l'application server in due tier distinti, ottenendo la seguente architettura:</p>
+<ol>
+<li>client</li>
+<li>web server</li>
+<li>application server</li>
+<li>database</li>
+</ol>
+<p>In questo modo ho una serie di vantaggi:</p>
+<ul>
+<li>posso cambiare la macchina dell'application server senza dover cambiare l'indirizzo IP pubblico del web server (e quindi il DNS)</li>
+<li>posso dirottare le richieste dei client a più di un application server, sia sia per bilanciamento del carico, sia per gestire richieste di tipo diverso</li>
+</ul>
+<p class="centered img-container">
+<img class="centered w80p" title="4-tiers" alt="4-tiers" src="assets/tiers-4.png">
+</p>
+<h2><a class="header" href="#architettura-n-tiers" id="architettura-n-tiers">Architettura n-tiers</a></h2>
+<p>Posso ulteriormente separare l'application server in più tiers, in caso di necessità. Le web application più complesse possono essere composte anche da 6 o 7 tiers.</p>
+<p>Ad esempio potrei avere una architettura come segue:</p>
+<ol>
+<li>client</li>
+<li>web server</li>
+<li>presentation tier: compone le pagine mettendo insieme parti provenienti da diverse macchine del livello successivo</li>
+<li>business logic tier: il codice più significativo della web application</li>
+<li>data access tier: strato che permette un accesso omogeneo dei dati</li>
+<li>database: uno o più database che contengono effettivamente i dati</li>
+</ol>
+<h3><a class="header" href="#alcune-precisazioni-importanti" id="alcune-precisazioni-importanti">Alcune precisazioni importanti</a></h3>
+<p>Il termine tecnico &quot;tier&quot; sta ad indicare uno &quot;strato&quot; che può comunicare solo con quelli adiacenti e non con altri. Quindi un'architettura &quot;client - server - database&quot; è del tutto diversa da un'architettura &quot;client - database - server&quot; (che nello specifico non avrebbe senso).</p>
+<p>Si usa &quot;tier&quot; anziché &quot;layer&quot; per specificare che si tratta di macchine (fisiche o virtuali) diverse. Quindi un &quot;layer&quot; potrebbe essere qualcosa di puramente logico o concettuale, mentre &quot;tier&quot; deve essere legato ad una macchina specifica. Per semplificare, possiamo definire una &quot;macchina&quot; come un sistema di elaborazione che ha un proprio IP e comunica con gli i tiers adiacenti con protocolli di rete.</p>
 <h2><a class="header" href="#da-studiare" id="da-studiare">Da studiare</a></h2>
 <p>Cercare sul manuale per l'esame i sistemi distribuiti e studiare i relativi paragrafi.</p>
 

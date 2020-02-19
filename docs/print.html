@@ -189,8 +189,8 @@ sapere indispensabile per chi vuole diventare un informatico.</p>
 <h2><a class="header" href="#architettura-3-tiers" id="architettura-3-tiers">Architettura 3-tiers</a></h2>
 <p>L'architettura che ci interessa particolarmente è quella con 3 strati, chiamati tecnicamente in inglese &quot;tiers&quot;.</p>
 <ol>
-<li>Client (es. browser)</li>
-<li>Web server/Application server (es. nginx/apache + PHP)</li>
+<li>Client (es. browser, app nativa)</li>
+<li>Web server + application server (es. nginx/apache + PHP)</li>
 <li>Database (es. MySQL, MariaDB, Oracle)</li>
 </ol>
 <p>Ci si può chiedere perché usare due macchine per i server, anziché una sola: ci sono vari motivi, ma principalmente perché:</p>
@@ -198,6 +198,36 @@ sapere indispensabile per chi vuole diventare un informatico.</p>
 <li>il database contiene dati riservati e deve essere più protetto, quindi meglio che stia dietro un'altro strato che fa da intermediario</li>
 <li>il database deve risiedere in delle macchine con dei requisiti di affidabilità e ridondanza molto elevati, quindi molto costose, ed è quindi più vantaggioso economicamente separarlo dal web/application server</li>
 </ul>
+<h2><a class="header" href="#architettura-4-tiers" id="architettura-4-tiers">Architettura 4-tiers</a></h2>
+<p>In molte situazioni può essere utile separare ulteriormente il web server e l'application server in due tier distinti, ottenendo la seguente architettura:</p>
+<ol>
+<li>client</li>
+<li>web server</li>
+<li>application server</li>
+<li>database</li>
+</ol>
+<p>In questo modo ho una serie di vantaggi:</p>
+<ul>
+<li>posso cambiare la macchina dell'application server senza dover cambiare l'indirizzo IP pubblico del web server (e quindi il DNS)</li>
+<li>posso dirottare le richieste dei client a più di un application server, sia sia per bilanciamento del carico, sia per gestire richieste di tipo diverso</li>
+</ul>
+<p class="centered img-container">
+<img class="centered w80p" title="4-tiers" alt="4-tiers" src="01-tiers/assets/tiers-4.png">
+</p>
+<h2><a class="header" href="#architettura-n-tiers" id="architettura-n-tiers">Architettura n-tiers</a></h2>
+<p>Posso ulteriormente separare l'application server in più tiers, in caso di necessità. Le web application più complesse possono essere composte anche da 6 o 7 tiers.</p>
+<p>Ad esempio potrei avere una architettura come segue:</p>
+<ol>
+<li>client</li>
+<li>web server</li>
+<li>presentation tier: compone le pagine mettendo insieme parti provenienti da diverse macchine del livello successivo</li>
+<li>business logic tier: il codice più significativo della web application</li>
+<li>data access tier: strato che permette un accesso omogeneo dei dati</li>
+<li>database: uno o più database che contengono effettivamente i dati</li>
+</ol>
+<h3><a class="header" href="#alcune-precisazioni-importanti" id="alcune-precisazioni-importanti">Alcune precisazioni importanti</a></h3>
+<p>Il termine tecnico &quot;tier&quot; sta ad indicare uno &quot;strato&quot; che può comunicare solo con quelli adiacenti e non con altri. Quindi un'architettura &quot;client - server - database&quot; è del tutto diversa da un'architettura &quot;client - database - server&quot; (che nello specifico non avrebbe senso).</p>
+<p>Si usa &quot;tier&quot; anziché &quot;layer&quot; per specificare che si tratta di macchine (fisiche o virtuali) diverse. Quindi un &quot;layer&quot; potrebbe essere qualcosa di puramente logico o concettuale, mentre &quot;tier&quot; deve essere legato ad una macchina specifica. Per semplificare, possiamo definire una &quot;macchina&quot; come un sistema di elaborazione che ha un proprio IP e comunica con gli i tiers adiacenti con protocolli di rete.</p>
 <h2><a class="header" href="#da-studiare" id="da-studiare">Da studiare</a></h2>
 <p>Cercare sul manuale per l'esame i sistemi distribuiti e studiare i relativi paragrafi.</p>
 <h1><a class="header" href="#html5" id="html5">HTML5</a></h1>
@@ -556,6 +586,18 @@ p.img-container::after {
 <p>PUT è idempotente: facendo più richieste HTTP PUT, il DB viene (eventualmente) modificato solo la prima volta.</p>
 <p>POST non è idempotente: facendo più richieste HTTP POST, ad ogni chiamata verrà aggiunta una nuova risorsa e creata una chiave primaria per noi.</p>
 <p>Approfondimento sul concetto di idempotenza <a href="http://blog.loris.tissino.it/2013/06/http-rest-e-api.html">qui</a>.</p>
+<h2><a class="header" href="#rest-api" id="rest-api">REST API</a></h2>
+<p>L'approccio di usare diversi metodi HTTP con specifici URL per interrogare il server e manipolare le risorse ha un nome specifico: REST (Representational State Transfer). Proposto per la prima volta nel 2000 da Roy Fielding (USA), prevede i seguenti concetti:</p>
+<ul>
+<li>Risorse con URL auto-descrittivi</li>
+<li>Utilizzo esplicito dei metodi HTTP</li>
+<li>Collegamenti tra risorse</li>
+<li>Comunicazione senza stato</li>
+</ul>
+<p>Un piccolo approfondimento sull'ultimo punto: la comunicazione senza stato (<em>stateless</em>) è qualcosa che pervade il web e forse è uno dei suoi tratti caratteristici e di successo. In pratica, significa che ogni richiesta è indipendente dalle altre e il server non tiene traccia direttamente della successione di chiamate. Un collegamento può essere fatto indirettamente tramite cookies o chiavi di sessione, ma il server non tiene aperta un thread, processo o canale tra una chiamata HTTP e la successiva.</p>
+<blockquote>
+<p>Un alternativa ormai praticamente superata alle REST API sono le SOAP API, in cui uso sempre lo stesso URL (es. <code>recipepuppy.com</code>) e la specifica risorsa viene specificata all'interno del body della richiesta HTTP. Questo tipo di approccio però non si coniuga bene con il funzionamento dei browser e del web in generale, rendendo impossibile ad esempio creare bookmark a specifiche risorse, condividere link significativi, navigare indietro nella cronologia delle pagine visitate. In generale quindi oggi SOAP è sconsigliato.</p>
+</blockquote>
 <h1><a class="header" href="#postman" id="postman">Postman</a></h1>
 <p>Provare una chiamata HTTP con il metodo GET è facile: basta scrivere l'indirizzo sulla barra di un browser. Provare gli altri metodi è più complesso, e può involvere la scrittura di un programma di test in qualche linguaggio, ad esempio JavaScript. Il problema di questo approccio è che fare il test di tante richieste diverse diventa complicato, e si perde più tempo a scrivere e modificare lo script che a fare i test.</p>
 <p>Per risolvere questo problema, esistono delle suite di test specifiche per le chiamate HTTP. Una delle applicazioni più usate al momento è <a href="https://www.getpostman.com/">Postman</a>.</p>
@@ -637,7 +679,7 @@ Strettamente legato al punto precedente c'è quindi la scelta della dislocazione
 </blockquote>
 <h3><a class="header" href="#stima-dei-costi" id="stima-dei-costi">Stima dei costi</a></h3>
 <p>Un buon modo per fare una stima dei costi per il cloud è usare qualche calcolatore online, per esempio [questo ufficiale] di AWS.</p>
-<p>Per il caso di un'azienda di piccole medie dimensioni che offre un servizio web, in particolare ho fatto <a href="https://calculator.s3.amazonaws.com/index.html#r=IAD&amp;key=files/calc-ef98cd6733141d329fbbcaffe1d59a4e1ac16a7b&amp;v=ver20200204w5">questa</a> stima. </p>
+<p>Per il caso di un'azienda di medie dimensioni che offre un servizio web (circa 20 dipendenti in un'unica sede) ho fatto <a href="https://calculator.s3.amazonaws.com/index.html#r=IAD&amp;key=files/calc-ef98cd6733141d329fbbcaffe1d59a4e1ac16a7b&amp;v=ver20200204w5">questa</a> stima. </p>
 <table><thead><tr><th>Service Type</th><th>Service Price</th></tr></thead><tbody>
 <tr><td>Amazon EC2 Service</td><td>$243.61</td></tr>
 <tr><td>Amazon S3 Service</td><td>$24.44</td></tr>
@@ -647,6 +689,9 @@ Strettamente legato al punto precedente c'è quindi la scelta della dislocazione
 <tr><td><strong>Total Monthly Payment</strong></td><td><strong>$967.73</strong></td></tr>
 </tbody></table>
 <p>Ci aggiriamo in questo caso intorno ai 1000 dollari al mese. </p>
+<h3><a class="header" href="#attenzione-alle-ipotesi-aggiuntive" id="attenzione-alle-ipotesi-aggiuntive">Attenzione alle ipotesi aggiuntive</a></h3>
+<p>Per poter fare una stima dei costi è di fondamentale importanza fare un dimensionamento delle esigenze del cliente. Mi serve sapere almeno quanti utenti avrà il servizio richiesto (10? 100? 1000? un milione?) e da dove accedono (unica sede? tante sedi? tutta Italia? tutto il mondo?).</p>
+<p>Se i requisiti scritti non mi danno direttamente queste informazioni, le devo reperire chiedendo al cliente oppure, nel caso dei compiti in classe e dell'esame di stato, scrivendo delle <em>opportune ipotesi aggiuntive</em>.</p>
 <h3><a class="header" href="#pro--cons" id="pro--cons">Pro &amp; Cons</a></h3>
 <p>Pro</p>
 <ul>
@@ -935,16 +980,16 @@ Dopo che avrà finito di far scorrere tutte le stampe di inizializzazione (potre
 <li>armadio rack: ~1k €</li>
 <li>server: ~3k €</li>
 <li>impianto continuità: ~500 €</li>
-<li>dispositivi rete (router, switch, ...): ~2k 
-TOTALE: ~6.5k €</li>
+<li>dispositivi rete (router, switch, ...): ~2k</li>
 </ul>
+<p>TOTALE: ~6.5k €</p>
 <p>Costi manutenzione anno:</p>
 <ul>
 <li>sistemista (part-time): ~5k €</li>
 <li>elettricità: ~2k €</li>
-<li>costo gestione locale: ~1k €
-TOTALE: ~8k €</li>
+<li>costo gestione locale: ~1k €</li>
 </ul>
+<p>TOTALE: ~8k €</p>
 <h3><a class="header" href="#pro--cons-1" id="pro--cons-1">Pro &amp; Cons</a></h3>
 <p>Pro</p>
 <ul>

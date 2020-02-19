@@ -202,6 +202,18 @@ p.img-container::after {
 <p>PUT è idempotente: facendo più richieste HTTP PUT, il DB viene (eventualmente) modificato solo la prima volta.</p>
 <p>POST non è idempotente: facendo più richieste HTTP POST, ad ogni chiamata verrà aggiunta una nuova risorsa e creata una chiave primaria per noi.</p>
 <p>Approfondimento sul concetto di idempotenza <a href="http://blog.loris.tissino.it/2013/06/http-rest-e-api.html">qui</a>.</p>
+<h2><a class="header" href="#rest-api" id="rest-api">REST API</a></h2>
+<p>L'approccio di usare diversi metodi HTTP con specifici URL per interrogare il server e manipolare le risorse ha un nome specifico: REST (Representational State Transfer). Proposto per la prima volta nel 2000 da Roy Fielding (USA), prevede i seguenti concetti:</p>
+<ul>
+<li>Risorse con URL auto-descrittivi</li>
+<li>Utilizzo esplicito dei metodi HTTP</li>
+<li>Collegamenti tra risorse</li>
+<li>Comunicazione senza stato</li>
+</ul>
+<p>Un piccolo approfondimento sull'ultimo punto: la comunicazione senza stato (<em>stateless</em>) è qualcosa che pervade il web e forse è uno dei suoi tratti caratteristici e di successo. In pratica, significa che ogni richiesta è indipendente dalle altre e il server non tiene traccia direttamente della successione di chiamate. Un collegamento può essere fatto indirettamente tramite cookies o chiavi di sessione, ma il server non tiene aperta un thread, processo o canale tra una chiamata HTTP e la successiva.</p>
+<blockquote>
+<p>Un alternativa ormai praticamente superata alle REST API sono le SOAP API, in cui uso sempre lo stesso URL (es. <code>recipepuppy.com</code>) e la specifica risorsa viene specificata all'interno del body della richiesta HTTP. Questo tipo di approccio però non si coniuga bene con il funzionamento dei browser e del web in generale, rendendo impossibile ad esempio creare bookmark a specifiche risorse, condividere link significativi, navigare indietro nella cronologia delle pagine visitate. In generale quindi oggi SOAP è sconsigliato.</p>
+</blockquote>
 
                     </main>
 
