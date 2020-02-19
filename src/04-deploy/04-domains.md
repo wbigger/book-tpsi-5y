@@ -17,8 +17,7 @@ Per cominciare a creare il proprio business e la propria relazione con il client
 
 Esistono molti siti che offrono questo servizio, chiamati "registrar", ad esempio noi abbiamo usato [GoDaddy](godaddy.com), ma è possibile usare AWS, Google, Aruba e tantissimi altre aziende simili.
 
-Ovviamente, i registrar non decidono quali siti puoi comprare oppure no: seguono le regole che vengono fornite dallo [IANA]
-(https://www.iana.org/), l'ente internazionale che si occupa di gestire fondamentalmente gli indirizzi IP. Lo IANA è un'emanazione dell'ICANN (Internet Corporation for Assigned Names and Numbers), un ente sotto il diretto controllo del Ministero del commercio degli Stati Uniti. 
+Ovviamente, i registrar non decidono quali siti puoi comprare oppure no: seguono le regole che vengono fornite dallo [IANA](https://www.iana.org/), l'ente internazionale che si occupa di gestire fondamentalmente gli indirizzi IP. Lo IANA è un'emanazione dell'ICANN (Internet Corporation for Assigned Names and Numbers), un ente sotto il diretto controllo del Ministero del commercio degli Stati Uniti. 
 
 Per consultare quali sono tutti i domini di primi livello esistenti, la fonte ufficiale è [questa](https://www.iana.org/domains/root/db).
 
