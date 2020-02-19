@@ -13,7 +13,7 @@ Alcuni punti critici sono legati alla privacy: i dati sono fisicamente ospitati 
 ### Stima dei costi
 Un buon modo per fare una stima dei costi per il cloud è usare qualche calcolatore online, per esempio [questo ufficiale] di AWS.
 
-Per il caso di un'azienda di piccole medie dimensioni che offre un servizio web, in particolare ho fatto [questa](https://calculator.s3.amazonaws.com/index.html#r=IAD&key=files/calc-ef98cd6733141d329fbbcaffe1d59a4e1ac16a7b&v=ver20200204w5) stima. 
+Per il caso di un'azienda di medie dimensioni che offre un servizio web (circa 20 dipendenti in un'unica sede) ho fatto [questa](https://calculator.s3.amazonaws.com/index.html#r=IAD&key=files/calc-ef98cd6733141d329fbbcaffe1d59a4e1ac16a7b&v=ver20200204w5) stima. 
 
 |Service Type|Service Price|
 |---|---|
@@ -25,6 +25,11 @@ Per il caso di un'azienda di piccole medie dimensioni che offre un servizio web,
 |**Total Monthly Payment**|**$967.73**|
 
 Ci aggiriamo in questo caso intorno ai 1000 dollari al mese. 
+
+### Attenzione alle ipotesi aggiuntive
+Per poter fare una stima dei costi è di fondamentale importanza fare un dimensionamento delle esigenze del cliente. Mi serve sapere almeno quanti utenti avrà il servizio richiesto (10? 100? 1000? un milione?) e da dove accedono (unica sede? tante sedi? tutta Italia? tutto il mondo?).
+
+Se i requisiti scritti non mi danno direttamente queste informazioni, le devo reperire chiedendo al cliente oppure, nel caso dei compiti in classe e dell'esame di stato, scrivendo delle _opportune ipotesi aggiuntive_.
 
 ### Pro & Cons
 Pro

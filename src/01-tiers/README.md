@@ -15,7 +15,6 @@ Nel primo caso, ci troviamo davanti un'applicazione _monolitica_, o _single tier
 ## Una definizione
 Esistono varie definizioni, qui ne forniamo una:
 
-
 "Un sistema distribuito consiste di un insieme di calcolatori autonomi, connessi fra loro tramite una rete e un middleware di distribuzione, che permette ai computer di coordinare le loro attività e di condividere le risorse del sistema, in modo che gli utenti percepiscano il sistema come un unico servizio integrato di calcolo."
 ([Wolfgang Emmerich, 1997](http://www0.cs.ucl.ac.uk/staff/ucacwxe/lectures/ds98-99/dsee3.pdf))
 
@@ -26,14 +25,44 @@ Nella definizione voglio sottolineare come, per funzionare, un sistema distribui
 ## Architettura 3-tiers
 L'architettura che ci interessa particolarmente è quella con 3 strati, chiamati tecnicamente in inglese "tiers".
 
-1. Client (es. browser)
-1. Web server/Application server (es. nginx/apache + PHP)
+1. Client (es. browser, app nativa)
+1. Web server + application server (es. nginx/apache + PHP)
 1. Database (es. MySQL, MariaDB, Oracle)
 
 Ci si può chiedere perché usare due macchine per i server, anziché una sola: ci sono vari motivi, ma principalmente perché:
 - il database contiene dati riservati e deve essere più protetto, quindi meglio che stia dietro un'altro strato che fa da intermediario
 - il database deve risiedere in delle macchine con dei requisiti di affidabilità e ridondanza molto elevati, quindi molto costose, ed è quindi più vantaggioso economicamente separarlo dal web/application server
 
+## Architettura 4-tiers
+In molte situazioni può essere utile separare ulteriormente il web server e l'application server in due tier distinti, ottenendo la seguente architettura:
+1. client
+1. web server
+1. application server
+1. database
+
+In questo modo ho una serie di vantaggi:
+- posso cambiare la macchina dell'application server senza dover cambiare l'indirizzo IP pubblico del web server (e quindi il DNS)
+- posso dirottare le richieste dei client a più di un application server, sia sia per bilanciamento del carico, sia per gestire richieste di tipo diverso
+
+<p class="centered img-container">
+<img class="centered w80p" title="4-tiers" alt="4-tiers" src="assets/tiers-4.png">
+</p>
+
+## Architettura n-tiers
+Posso ulteriormente separare l'application server in più tiers, in caso di necessità. Le web application più complesse possono essere composte anche da 6 o 7 tiers.
+
+Ad esempio potrei avere una architettura come segue:
+1. client
+1. web server
+1. presentation tier: compone le pagine mettendo insieme parti provenienti da diverse macchine del livello successivo
+1. business logic tier: il codice più significativo della web application
+1. data access tier: strato che permette un accesso omogeneo dei dati
+1. database: uno o più database che contengono effettivamente i dati
+
+### Alcune precisazioni importanti
+Il termine tecnico "tier" sta ad indicare uno "strato" che può comunicare solo con quelli adiacenti e non con altri. Quindi un'architettura "client - server - database" è del tutto diversa da un'architettura "client - database - server" (che nello specifico non avrebbe senso).
+
+Si usa "tier" anziché "layer" per specificare che si tratta di macchine (fisiche o virtuali) diverse. Quindi un "layer" potrebbe essere qualcosa di puramente logico o concettuale, mentre "tier" deve essere legato ad una macchina specifica. Per semplificare, possiamo definire una "macchina" come un sistema di elaborazione che ha un proprio IP e comunica con gli i tiers adiacenti con protocolli di rete.
 
 ## Da studiare
 Cercare sul manuale per l'esame i sistemi distribuiti e studiare i relativi paragrafi.

@@ -15,13 +15,15 @@ Costi iniziali:
 - armadio rack: ~1k €
 - server: ~3k €
 - impianto continuità: ~500 €
-- dispositivi rete (router, switch, ...): ~2k 
+- dispositivi rete (router, switch, ...): ~2k
+
 TOTALE: ~6.5k €
 
 Costi manutenzione anno:
 - sistemista (part-time): ~5k €
 - elettricità: ~2k €
 - costo gestione locale: ~1k €
+
 TOTALE: ~8k €
 
 

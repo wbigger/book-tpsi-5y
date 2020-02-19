@@ -59,3 +59,15 @@ PUT è idempotente: facendo più richieste HTTP PUT, il DB viene (eventualmente)
 POST non è idempotente: facendo più richieste HTTP POST, ad ogni chiamata verrà aggiunta una nuova risorsa e creata una chiave primaria per noi.
 
 Approfondimento sul concetto di idempotenza [qui]( http://blog.loris.tissino.it/2013/06/http-rest-e-api.html).
+
+
+## REST API
+L'approccio di usare diversi metodi HTTP con specifici URL per interrogare il server e manipolare le risorse ha un nome specifico: REST (Representational State Transfer). Proposto per la prima volta nel 2000 da Roy Fielding (USA), prevede i seguenti concetti:
+- Risorse con URL auto-descrittivi
+- Utilizzo esplicito dei metodi HTTP
+- Collegamenti tra risorse
+- Comunicazione senza stato
+
+Un piccolo approfondimento sull'ultimo punto: la comunicazione senza stato (_stateless_) è qualcosa che pervade il web e forse è uno dei suoi tratti caratteristici e di successo. In pratica, significa che ogni richiesta è indipendente dalle altre e il server non tiene traccia direttamente della successione di chiamate. Un collegamento può essere fatto indirettamente tramite cookies o chiavi di sessione, ma il server non tiene aperta un thread, processo o canale tra una chiamata HTTP e la successiva.
+
+> Un alternativa ormai praticamente superata alle REST API sono le SOAP API, in cui uso sempre lo stesso URL (es. `recipepuppy.com`) e la specifica risorsa viene specificata all'interno del body della richiesta HTTP. Questo tipo di approccio però non si coniuga bene con il funzionamento dei browser e del web in generale, rendendo impossibile ad esempio creare bookmark a specifiche risorse, condividere link significativi, navigare indietro nella cronologia delle pagine visitate. In generale quindi oggi SOAP è sconsigliato.
