@@ -54,15 +54,15 @@ Posso ulteriormente separare l'application server in più tiers, in caso di nece
 Ad esempio potrei avere una architettura come segue:
 1. client
 1. web server
-1. presentation tier: compone le pagine mettendo insieme parti provenienti da diverse macchine del livello successivo
+1. presentation tier: compone le pagine mettendo insieme parti provenienti da diverse macchine dello strato successivo
 1. business logic tier: il codice più significativo della web application
 1. data access tier: strato che permette un accesso omogeneo dei dati
 1. database: uno o più database che contengono effettivamente i dati
 
 ### Alcune precisazioni importanti
-Il termine tecnico "tier" sta ad indicare uno "strato" che può comunicare solo con quelli adiacenti e non con altri. Quindi un'architettura "client - server - database" è del tutto diversa da un'architettura "client - database - server" (che nello specifico non avrebbe senso).
+Il termine tecnico "tier" sta ad indicare uno "strato" che può comunicare solo con quelli adiacenti e non con altri. Quindi un'architettura "client - server - database" è del tutto diversa da un'architettura "client - database - server" (che non avrebbe senso).
 
-Si usa "tier" anziché "layer" per specificare che si tratta di macchine (fisiche o virtuali) diverse. Quindi un "layer" potrebbe essere qualcosa di puramente logico o concettuale, mentre "tier" deve essere legato ad una macchina specifica. Per semplificare, possiamo definire una "macchina" come un sistema di elaborazione che ha un proprio IP e comunica con gli i tiers adiacenti con protocolli di rete.
+Si usa "tier" anziché "layer" per specificare che si usano macchine (fisiche o virtuali) diverse. Quindi un "layer" potrebbe essere qualcosa di puramente logico o concettuale, mentre "tier" deve essere legato ad una macchina specifica. Per semplificare, possiamo definire una "macchina" come un sistema di elaborazione che ha un proprio IP e comunica con gli i tiers adiacenti con protocolli di rete.
 
 ## Da studiare
 Cercare sul manuale per l'esame i sistemi distribuiti e studiare i relativi paragrafi.
