@@ -1,4 +1,4 @@
-# Sviluppo HTML5
+# Sviluppo HTML5 e sistemi distribuiti
 
 **Istituto di Istruzione Superiore G. Marconi**
 
